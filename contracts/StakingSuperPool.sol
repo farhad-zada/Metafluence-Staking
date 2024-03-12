@@ -301,4 +301,9 @@ contract StakingSuperPoolUp is
         totalStaked -= st.amount;
         emit Claim(msg.sender);
     }
+
+    /** set staking expire date */
+    function setStakingExpireDate(uint _date) public onlyOwner {
+        stakingExpireDate = _date;
+    }
 }
