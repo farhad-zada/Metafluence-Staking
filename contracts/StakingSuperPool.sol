@@ -69,6 +69,7 @@ contract StakingSuperPoolUp is
     mapping(address => Staker[]) public stakers; // keeps all stakers
 
     uint256 public stakingExpireDate;
+    uint256 public rewardExpireDate;
 
     function initialize() public initializer {
         __Ownable_init();
@@ -248,7 +249,7 @@ contract StakingSuperPoolUp is
         uint256 _amount = staker.amount * 10 ** 10;
 
         //how many hours staked
-        uint _now = block.timestamp < stakingExpireDate
+        uint _now = block.timestamp < rewardExpireDate
             ? block.timestamp
             : stakingExpireDate;
         uint _claimedAt = staker.claimedAt;
@@ -305,5 +306,10 @@ contract StakingSuperPoolUp is
     /** set staking expire date */
     function setStakingExpireDate(uint _date) public onlyOwner {
         stakingExpireDate = _date;
+    }
+
+    /** set reward expire date */
+    function setRewardExpireDate(uint _date) public onlyOwner {
+        rewardExpireDate = _date;
     }
 }

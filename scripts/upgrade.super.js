@@ -2,6 +2,7 @@ const { ethers, upgrades } = require("hardhat");
 
 async function main() {
   const Super = await ethers.getContractFactory("StakingSuperPool");
+  console.log("Deploying Super...");
   const sp = await upgrades.deployProxy(Super, []);
 
   console.log("Super deployed to:", sp.target);
