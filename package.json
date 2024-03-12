@@ -1,0 +1,26 @@
+{
+  "name": "staking-wear",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dp-three": "npx hardhat deploy.three.js --network bsc",
+    "dp-six": "npx hardhat deploy.six.js --network bsc",
+    "dp-nine": "npx hardhat deploy.nine.js --network bsc",
+    "dp-super": "npx hardhat deploy.super.js --network bsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "hardhat": "^2.20.1"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.3",
+    "@openzeppelin/contracts-upgradeable": "^4.9.3",
+    "@openzeppelin/hardhat-upgrades": "^3.0.3",
+    "dotenv": "^16.4.5"
+  }
+}
