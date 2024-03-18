@@ -1,14 +1,10 @@
 const { ethers, upgrades } = require("hardhat");
 
 async function main() {
-  const Super = await ethers.getContractFactory("StakingSuperPool");
-  console.log("Deploying Super...");
-  const sp = await upgrades.deployProxy(Super, []);
-
-  console.log("Super deployed to:", sp.target);
+  const spTarget = "0x54b41a74aFbd38A847E3E95e87168ad169d7f943";
 
   const SuperUp = await ethers.getContractFactory("StakingSuperPoolUp");
-  const spUp = await upgrades.upgradeProxy(sp.target, SuperUp);
+  const spUp = await upgrades.upgradeProxy(spTarget, SuperUp);
 
   console.log("Super upgraded to:", spUp.target);
 }
