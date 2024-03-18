@@ -119,7 +119,7 @@ contract StakingSuperPoolUp is
         Staker[] memory myAllStakes = stakers[stakerAddr];
         for (uint i = 0; i < myAllStakes.length; i++) {
             myAllStakes[i].claimable = _calcReward(
-                msg.sender,
+                stakerAddr,
                 myAllStakes[i].stakedAt
             );
         }
@@ -251,7 +251,7 @@ contract StakingSuperPoolUp is
         //how many hours staked
         uint _now = block.timestamp < rewardExpireDate
             ? block.timestamp
-            : stakingExpireDate;
+            : rewardExpireDate;
         uint _claimedAt = staker.claimedAt;
 
         uint256 hour = (_now - _claimedAt) / REWARD_DEADLINE_SECONDS;
