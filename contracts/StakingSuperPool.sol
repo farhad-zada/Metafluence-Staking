@@ -119,7 +119,7 @@ contract StakingSuperPoolUp is
         Staker[] memory myAllStakes = stakers[stakerAddr];
         for (uint i = 0; i < myAllStakes.length; i++) {
             myAllStakes[i].claimable = _calcReward(
-                msg.sender,
+                stakerAddr,
                 myAllStakes[i].stakedAt
             );
         }
