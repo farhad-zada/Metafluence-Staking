@@ -249,15 +249,15 @@ contract StakingSuperPoolUp is
         uint256 _amount = staker.amount * 10 ** 10;
 
         //how many hours staked
-        uint timePassed = block.timestamp < rewardExpireDate
+        uint lastRewardableTimestamp = block.timestamp < rewardExpireDate
             ? block.timestamp
             : rewardExpireDate;
         uint _claimedAt = staker.claimedAt;
 
         uint256 rewardedSeconds = 0;
 
-        if (timePassed >= _claimedAt) {
-            rewardedSeconds = timePassed - _claimedAt;
+        if (lastRewardableTimestamp > _claimedAt) {
+            rewardedSeconds = lastRewardableTimestamp - _claimedAt;
         }
 
         uint256 hour = rewardedSeconds / REWARD_DEADLINE_SECONDS;
